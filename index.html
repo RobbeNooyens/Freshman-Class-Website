@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="nl">
+ <head>
+  <title>3La</title>
+  <meta charset="utf-8">
+  <!--<link rel="stylesheet" type="text/css" href="Project2-evaluatieOpmaak.css">-->
+  <style>
+  * { 
+	padding: 0;
+	margin: 0;
+	
+}
+body {
+	background-image: url(background-grey.jpg);
+	margin-left: auto;
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-top: 0;
+}
+#body2 {
+	background-color: white;
+	margin-left: 20%;
+	margin-bottom: 20px;
+	margin-right: 20%;
+	margin-top: 20px;
+	padding: 2%;
+	width: 60%;
+	font-family: droidsans-serif, sans-serif, serif; 
+}
+#createdBy {
+	margin-bottom: 10px;
+	padding: 1%;
+	font-family: serif, sans-serif, droidsans-serif; 
+}
+header {
+	font-size: 80px;
+	display: block;
+	padding-left: 40%;
+}
+nav {
+	width: 60%;
+	position: absolute;
+	background-color: gray;
+}
+nav ul {
+    list-style: none;
+}
+nav ul li {
+	float: left;
+}
+nav ul li a {
+	background-color: gray;
+	color: black;
+	font-weight: bold;
+	display: block;
+	margin-left: 0;
+	width: 150px;
+	font-size: 20px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: center;
+}
+nav ul li a:hover {
+	color: white;
+}
+#inhoud {
+	position: relative;
+	margin-top: 66px;
+	width: 100%;
+}
+#la.verstopt, #vakken.verstopt, #contact.verstopt, #fotos.verstopt {
+	display: none;
+}
+#la.zichtbaar, #vakken.zichtbaar, #contact.zichtbaar, #fotos.zichtbaar {
+	display: block;
+}
+h5 a {
+	text-decoration: none;
+    color: gray;
+}
+h5 a:hover {
+	text-decoration: underline;
+	color: black;
+}
+#fotos img {
+	float: left;
+}
+#klasgenoten {
+	width: 100%;
+	margin-top: 5%;
+}
+#klasgenoten td {
+	width: 20%;
+	text-align: left;
+	padding-left: 2%;
+}
+#randomhr {
+	color: #e2e2d0;
+	height: 4px;
+	width: 100%;
+}
+#lessenrooster td{
+	text-align: center;
+	width: 5%;
+	height: 40px;
+}
+#lessenrooster th {
+	width: 1%;
+}
+#lessenrooster caption {
+	font-size: 30px;
+}
+#contactFormId{
+	margin-top: 5%;
+}
+  </style>
+  <script language="javascript">
+   function laatZien(divID) {
+ 	vakken.className = "verstopt";
+ 	la.className = "verstopt";
+	fotos.className = "verstopt";
+	contact.className = "verstopt";
+    var item = document.getElementById(divID);
+	if (item.className == "verstopt") {
+	  item.className = "zichtbaar";
+	}
+   }
+   </script>
+   <script lang="javascript">
+   function nakijkenvakken() {
+    var vak = "vb";
+	var leerkracht = "vb";
+	var lesuren = "vb";
+	var dagen = "vb";
+	if (document.lesvakken.Wiskunde.checked) {
+	  vak = "wiskunde";
+	  leerkracht = "Mevr. Van Loon";
+	  lesuren = "6";
+	  dagen = "maandag (2), dinsdag (1), donderdag (1), vrijdag (2)";
+	} else if (document.lesvakken.Latijn.checked) {
+	  vak = "Latijn";
+	  leerkracht = "Mevr. Geerts";
+	  lesuren = "5";
+	  dagen = "maandag(1), dinsdag(1), woensdag(1), donderdag(1), vrijdag(1)";
+	} else if (document.lesvakken.Nederlands.checked) {
+	  vak = "Nederlands";
+	  leerkracht = "Mr. Jespers";
+	  lesuren = "4";
+	  dagen = "maandag(1), woensdag(1), donderdag(1), vrijdag(1)";
+	} else if (document.lesvakken.Frans.checked) {
+	  vak = "Frans";
+	  leerkracht = "Mr. Belmans";
+	  lesuren = "3";
+	  dagen = "maandag(1), dinsdag(1), vrijdag(1)";
+	} else if (document.lesvakken.Godsdienst.checked) {
+	  vak = "godsdienst";
+	  leerkracht = "Mr. Belmans";
+	  lesuren = "2";
+	  dagen = "maandag(1), woensdag(1)";
+	} else if (document.lesvakken.LO.checked) {
+	  vak = "LO";
+	  leerkracht = "Mr. Nouws";
+	  lesuren = "2";
+	  dagen = "dinsdag(1), woensdag(1)";
+	} else if (document.lesvakken.Geschiedenis.checked) {
+	  vak = "geschiedenis";
+	  leerkracht = "Mevr. Van Dessel";
+	  lesuren = "2";
+	  dagen = "dinsdag(1), vrijdag(1)";
+	} else if (document.lesvakken.Engels.checked) {
+	  vak = "Engels";
+	  leerkracht = "Mevr. Vervloet";
+	  lesuren = "2";
+	  dagen = "maandag(1), donderdag(1)";
+	} else if (document.lesvakken.Biologie.checked) {
+	  vak = "biologie";
+	  leerkracht = "Mevr. De Westelinck";
+	  lesuren = "1";
+	  dagen = "dinsdag(1)";
+	} else if (document.lesvakken.Chemie.checked) {
+	  vak = "chemie";
+	  leerkracht = "Mevr. Van Zele";
+	  lesuren = "1";
+	  dagen = "donderdag(1)";
+	} else if (document.lesvakken.Fysica.checked) {
+	  vak = "fysica";
+	  leerkracht = "Mevr. Van Winckel";
+	  lesuren = "1";
+	  dagen = "donderdag(1)";
+	} else if (document.lesvakken.Aardrijkskunde.checked) {
+	  vak = "aardrijkskunde";
+	  leerkracht = "Mevr. Buiks";
+	  lesuren = "1";
+	  dagen = "donderdag(1)";
+	} else if (document.lesvakken.PO.checked) {
+	  vak = "PO";
+	  leerkracht = "Mevr. Van den Brande";
+	  lesuren = "1";
+	  dagen = "vrijdag(1)";
+	}
+	var informatie = "Deze informatie heb ik voor u kunnen verzamelen:\n";
+	if (document.informatievakken.Leerkracht.checked) {
+	  if (document.informatievakken.Aantallesuren.checked || document.informatievakken.Dagen.checked) {
+	    informatie += " leerkracht: " + leerkracht + "\n";
+	  } else {
+	    informatie += " leerkracht: " + leerkracht;
+	  }
+	}
+	if (document.informatievakken.Aantallesuren.checked) {
+	  if (document.informatievakken.Dagen.checked) {
+	    informatie += " aantal lesuren: " + lesuren + "\n";
+	  } else {
+	    informatie += " aantal lesuren: " + lesuren;
+	  }
+	}
+	if (document.informatievakken.Dagen.checked) {
+	  informatie += " dagen: " + dagen;
+	}
+	alert(informatie);
+	}
+  </script>
+ </head>
+ <body>
+ <div id="body2"> 
+  <img height="80px" align="left" src="https://belgianfriends2.files.wordpress.com/2016/03/fdgsdfg.jpg?w=699&h=475&crop=1" />
+  <header>3La</header><!-- titel bovenaan de pagina-->
+  <br />
+  <nav>
+   <ul>
+    <li><a href="javascript:laatZien('la');">3La</a></li>
+    <li><a href="javascript:laatZien('vakken');">Vakken</a></li>
+    <li><a href="javascript:laatZien('fotos');">Media</a></li>
+    <li><a href="javascript:laatZien('contact');">Contact</a></li>
+   </ul>
+  </nav>
+  <section id="inhoud">
+   <div id="la" class="zichtbaar">
+    <p>
+     Ergens in het Klein-Seminarie...<br /><br />
+	 Bevindt er zich een klas met 25 leerlingen...<br /><br />
+	 Uit het derde jaar...<br /><br />
+	 O.l.v. Mevr. Geerts ...<br /><br />
+	 <b>3La!</b>
+	</p>
+    <br />
+    <br />	
+	<br />
+	<hr id="randomhr">
+	<br />
+	<h3>Latijn - Wikipedia</h3>
+	<br />
+	<p>
+     Latijn ((Lingua) Latina) is een dode Italische taal die oorspronkelijk door de Romeinen of Latijnen werd gesproken, een volk dat vanaf het eerste millennium voor Christus in de streek Latium (het huidige Lazio, Italië) woonde. De naam van de taal is afgeleid van deze streeknaam. Doordat de stad Rome vanaf 500 v.Chr. in dit gebied haar politieke en militaire invloed vergrootte, werd ook haar taal buiten de stadsgrenzen verspreid. Rome werd de hoofdstad van het Romeinse Rijk, dat bleef groeien tot het in de tweede eeuw na Christus zijn grootste omvang bereikte.<br />Nog tot het einde van de eerste eeuw na Christus werd in Rome meer Koinè-Grieks gesproken dan Latijn. Latijn was vooral de omgangstaal in Spanje, Gallië, Italia, Britannia en Africa. Latijn was de taal van de overheid en literatuur. Het Latijn werd geleidelijk aan de voertaal in het westelijke deel van dit rijk, terwijl het Koinè-Grieks dat in het oostelijke deel was en bleef.
+    </p>
+	<br />
+	<h5>Bron: <a href="https://nl.wikipedia.org/wiki/Latijn"><abbr title="https://nl.wikipedia.org/wiki/Latijn">Wikipedia</abbr></a></h5>
+    <br />
+	<p>#random</p>
+	<br />
+	<hr id="randomhr">
+	<br />
+	<p>
+	<br />
+	<table id="klasgenoten" border="1">
+	<caption>
+	Leerlingen uit 3La:
+	<br />
+	</caption>
+	<tr>
+	<td>
+	Noa<br />	
+	Fran<br />		 
+	Ine<br />		 
+	Lauren<br />		 
+	Shady<br />
+    </td>
+    <td>	 
+ 	Niels<br />		 
+	Juliet<br />		 
+	Lune<br />		 
+	Lieselotte<br />		 
+	Fien<br />
+    </td>
+    <td>	
+	Miel<br />		 
+	Tijs<br />		 
+	Jan<br />		 
+	Kamil<br />		 
+	Polle<br />
+    </td>
+    <td>	
+	Alexander<br />		 
+	Robbe<br />		 
+	Thomas<br />		 
+	Dries<br />		 
+	Emilia<br />
+    </td>
+    <td>	
+	Michiel<br />		 
+	Guus<br />		 
+	Nathan<br />		 
+	Wout<br />		 
+	Stien<br />	
+	</td>
+	</tr>
+    </table>
+   </div>
+   <div id="vakken" class="verstopt">
+   <table name="informatielessen">
+    <tr>
+	 <td colspan="2">Kies een vak en wat je te weten wilt komen:<br /><hr></td>
+	</tr>
+	<tr>
+    <td>
+	 <br />
+	 <form name="lesvakken">
+      <input type="radio" name="vak" id="Wiskunde" value="WI" checked> Wiskunde
+	  <br />
+	  <input type="radio" name="vak" id="Latijn" value="LA"> Latijn
+	  <br />
+	  <input type="radio" name="vak" id="Nederlands" value="NE"> Nederlands
+	  <br />
+	  <input type="radio" name="vak" id="Frans" value="FR"> Frans
+	  <br />
+	  <input type="radio" name="vak" id="Godsdienst" value="FR"> Godsdienst
+	  <br />
+	  <input type="radio" name="vak" id="LO" value="LO"> LO
+	  <br />
+	  <input type="radio" name="vak" id="Geschiedenis" value="GE"> Geschiedenis
+	  <br />
+	  <input type="radio" name="vak" id="Engels" value="EN"> Engels
+	  <br />
+	  <input type="radio" name="vak" id="Biologie" value="BI"> Biologie
+	  <br />
+	  <input type="radio" name="vak" id="Chemie" value="CH"> Chemie
+	  <br />
+	  <input type="radio" name="vak" id="Fysica" value="FY"> Fysica
+	  <br />
+	  <input type="radio" name="vak" id="Aardrijkskunde" value="AA"> Aardrijkskunde
+	  <br />
+	  <input type="radio" name="vak" id="PO" value="PO"> PO
+	 </form>
+    </td>
+	<td valign="top">
+	 <br />
+	 <form name="informatievakken">
+	  <input type="checkbox" name="Leerkracht" id="Leerkracht" value="lk"> Leerkracht
+	  <br />
+	  <input type="checkbox" name="Aantallesuren" id="Aantallesuren" value="Al"> Aantal lesuren
+	  <br />
+	  <input type="checkbox" name="Dagen" id="Dagen" value="Dg"> Dagen
+	  <br /><br />
+	  <input type="button" name="klaar" value="Klaar" onClick="nakijkenvakken()">
+	 </form>
+	</td>
+    </tr>
+   </table>
+   <br /><br /><br />
+   <div id="tabelcentreren1" align="center">
+   <table id="lessenrooster" border="1">
+    <caption>Lessenrooster</caption>
+	 <tr>
+	  <th></th>
+	  <th>Maandag</th>
+	  <th>Dinsdag</th>
+	  <th>Woensdag</th>
+	  <th>Donderdag</th>
+	  <th>Vrijdag</th>
+	 </tr>
+	 <tr>
+	  <th>1</th>
+	  <td>EN</td>
+	  <td>LO</td>
+	  <td>LO</td>
+	  <td>EN</td>
+	  <td>NE</td>
+	 </tr>
+	 <tr>
+	  <th>2</th>
+	  <td>GO</td>
+	  <td>WI</td>
+	  <td>GO</td>
+	  <td>WI</td>
+	  <td>FR</td>
+	 </tr>
+	 <tr>
+	  <th>3</th>
+	  <td>WI</td>
+	  <td>GE</td>
+	  <td>LA</td>
+	  <td>AA</td>
+	  <td>LA</td>
+	 </tr>
+	 <tr>
+	  <th>4</th>
+	  <td>WI</td>
+	  <td>IN</td>
+	  <td>NE</td>
+	  <td>FY</td>
+	  <td>GE</td>
+	 </tr>
+	 <tr>
+	  <th>5</th>
+	  <td>LA</td>
+	  <td>LA</td>
+	  <td></td>
+	  <td>CH</td>
+	  <td>PO</td>
+	 </tr>
+	 <tr>
+	  <th>6</th>
+	  <td>FR</td>
+	  <td>BI</td>
+	  <td></td>
+	  <td>NE</td>
+	  <td>WI</td>
+	 </tr>
+	 <tr>
+	  <th>7</th>
+	  <td>NE</td>
+	  <td>FR</td>
+	  <td></td>
+	  <td>LA</td>
+	  <td>WI</td>
+	 </tr>
+	</table>
+   </div>
+   </div>
+   <div id="fotos" class="verstopt">
+    <a href="https://scontent-amt2-1.xx.fbcdn.net/v/t31.0-8/15235776_919554031478405_8479994175542170023_o.jpg?oh=ae681b21e672c7c9a3ac0874e1f54273&oe=59165816" target="_blank"><abbr title="3La met Adil El Arbi"><img width="100%" src="https://scontent-amt2-1.xx.fbcdn.net/v/t31.0-8/15235776_919554031478405_8479994175542170023_o.jpg?oh=ae681b21e672c7c9a3ac0874e1f54273&oe=59165816"></abbr></a>
+    <a href="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13164215_780578105375999_6516235272139649693_n.jpg?oh=ddc5ac8ff512eef6591f65c8f466b2a8&oe=58D7A362" target="_blank"><abbr title="Xanten - Museum 2015-2016"><img width="36%" src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13164215_780578105375999_6516235272139649693_n.jpg?oh=ddc5ac8ff512eef6591f65c8f466b2a8&oe=58D7A362"></abbr></a>
+	<br />
+	<a href="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13173805_780578112042665_6787759850528712458_n.jpg?oh=d5a0ca00a2fb25876b84e91c098fbf44&oe=58DED02B" target="_blank"><abbr title="Xanten - Park 2015-2016"><img width="64%" src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13173805_780578112042665_6787759850528712458_n.jpg?oh=d5a0ca00a2fb25876b84e91c098fbf44&oe=58DED02B"></abbr></a>
+	<br />
+	<abbr title="Quiz Latijn met Smartphone @Mevr. Geerts"><video controls><source type="video/mp4" src="https://www.magisto.com/api/download/PlpCJ1hWRWFrQB1iCzE?ref=facebook&amp;ua=fbapp"></video></abbr>
+   </div>
+   <div id="contact" class="verstopt">
+   <img src="http://c.assets.sh/SQABobac_WvTu0-ZPgTR" width="100%" />
+   <br />
+   <form name="contactForm" id="contactFormId">
+    <p>Naam: </p>
+    <input type="name" name="vnaam" value="" placeholder="Voornaam">
+    <input type="name" name="anaam" value="" placeholder="Achternaam">
+    <br /><br />
+	<input type="radio" name="geslacht" id="man" value="" checked> Man
+	<input type="radio" name="geslacht" id="vrouw" value=""> Vrouw
+	<br /><br />
+    <p>E-mail: </p>
+	<input type="email" name="email" value="" placeholder="E-mailadres" required>
+	<br /><br />
+	<p>Reactie: </p>
+	<textarea name="boodschap" value="" rows="10" col="2"></textarea>
+	<br /><br /><br />
+	<input type="button" name="contactFormindienen" value="Versturen" onClick="alert('Sorry, maar ik kan uw gegevens nog niet opslaan in een databank. Dit is misschien iets voor later :)')">
+   </form>
+   </div>
+  </section>
+ </div>
+  <div id="createdBy" align="center">
+   Created By Robbe Nooyens
+  </div>
+</body>
+</html>
+
